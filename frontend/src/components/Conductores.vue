@@ -63,7 +63,9 @@ export default {
       )
       if (!imageFile) return null
       
-      return 'http://localhost' + imageFile.attributes.uri.url
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost';
+      const imageUrl = imageFile.attributes.uri.url;
+      return imageUrl.startsWith('http') ? imageUrl : `${API_URL}${imageUrl}`;
     }
   }
 }
