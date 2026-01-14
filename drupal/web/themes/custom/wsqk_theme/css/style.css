@@ -1,0 +1,205 @@
+/* WSQK The Squawk - Custom Theme */
+/* Stranger Things inspired - Hawkins, Indiana */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --color-bg-dark: #0d0d0d;
+  --color-bg-card: #1a1a1a;
+  --color-primary: #e50914;
+  --color-secondary: #b81d24;
+  --color-accent: #f5f5f1;
+  --color-text: #e5e5e5;
+  --color-text-muted: #808080;
+  --color-glow: rgba(229, 9, 20, 0.4);
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg-dark);
+  min-height: 100vh;
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+/* Header */
+.region-header {
+  background: linear-gradient(180deg, #0d0d0d 0%, #1a0a0a 100%);
+  padding: 3rem 2rem;
+  text-align: center;
+  border-bottom: 2px solid var(--color-primary);
+  box-shadow: 0 4px 30px var(--color-glow);
+}
+
+.site-name {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.site-name a {
+  color: var(--color-primary);
+  text-decoration: none;
+  text-shadow: 
+    0 0 10px var(--color-glow),
+    0 0 20px var(--color-glow),
+    0 0 40px var(--color-glow);
+  transition: text-shadow 0.3s ease;
+}
+
+.site-name a:hover {
+  text-shadow: 
+    0 0 20px var(--color-glow),
+    0 0 40px var(--color-glow),
+    0 0 60px var(--color-glow);
+}
+
+.site-tagline {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Content */
+.region-content {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 2rem 6rem;
+}
+
+article, .views-row {
+  background: var(--color-bg-card);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  border-left: 3px solid var(--color-primary);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+article:hover, .views-row:hover {
+  transform: translateX(4px);
+  box-shadow: -4px 0 20px var(--color-glow);
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+h2 a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+h2 a:hover {
+  color: var(--color-primary);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.node__meta, .submitted {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  margin: 0.75rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+
+/* Footer */
+.region-footer {
+  background: var(--color-bg-dark);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  color: var(--color-text-muted);
+  border-top: 1px solid #2a2a2a;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+}
+
+ul li {
+  margin: 0.5rem 0;
+}
+
+ul li::before {
+  content: ">";
+  color: var(--color-primary);
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+/* Images */
+article img, .views-row img {
+  width: 100%;
+  max-width: 250px;
+  height: 180px;
+  object-fit: cover;
+  border: 2px solid var(--color-primary);
+  margin: 1rem 0;
+}
+
+.field--name-field-foto,
+.field--name-field-imagen,
+.field--type-image {
+  margin: 1rem 0;
+}
+
+.field__label {
+  display: none;
+}
+
+/* Admin toolbar adjustment */
+body.toolbar-fixed .region-header {
+  margin-top: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .site-name {
+    font-size: 2.5rem;
+  }
+  
+  .region-content {
+    padding: 0 1rem 6rem;
+    margin: 2rem auto;
+  }
+  
+  article, .views-row {
+    padding: 1.5rem;
+  }
+}

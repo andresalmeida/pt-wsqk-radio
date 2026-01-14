@@ -1,0 +1,487 @@
+/* WSQK The Squawk - Frontend Theme */
+/* Inspired by Stranger Things / 80s Radio aesthetic */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --color-bg-dark: #0a1628;
+  --color-bg-card: #122240;
+  --color-primary: #e31c25;
+  --color-secondary: #ffd700;
+  --color-accent: #f5f5f1;
+  --color-text: #e5e5e5;
+  --color-text-muted: #8899aa;
+  --color-glow-red: rgba(227, 28, 37, 0.5);
+  --color-glow-yellow: rgba(255, 215, 0, 0.4);
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg-dark);
+  min-height: 100vh;
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+#app {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+/* Hero Section with Video Background */
+.hero {
+  position: relative;
+  height: 70vh;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  background: var(--color-bg-dark);
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.hero-video iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw; /* 16:9 aspect ratio */
+  min-height: 100vh;
+  min-width: 177.77vh; /* 16:9 aspect ratio */
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 22, 40, 0.7) 0%,
+    rgba(10, 22, 40, 0.85) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: 6rem;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  text-shadow: 
+    0 0 20px var(--color-glow-red),
+    0 0 40px var(--color-glow-red),
+    0 0 60px var(--color-glow-red);
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--color-secondary);
+  text-shadow: 0 0 20px var(--color-glow-yellow);
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.hero-tagline {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Navigation */
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(180deg, rgba(10, 22, 40, 0.9) 0%, transparent 100%);
+}
+
+.nav button {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  background: transparent;
+  border: 2px solid transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.nav button:hover {
+  color: var(--color-secondary);
+}
+
+.nav button.active {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Main Content */
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem 4rem;
+}
+
+/* Section Titles */
+.section-title {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  letter-spacing: 0.1em;
+  color: var(--color-secondary);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--color-primary);
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Standard Cards */
+.card {
+  background: var(--color-bg-card);
+  padding: 1.5rem;
+  border-left: 3px solid var(--color-primary);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateX(4px);
+  box-shadow: -4px 0 20px var(--color-glow-red);
+}
+
+.card h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+
+.card-meta {
+  color: var(--color-secondary);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.card-body {
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border: 2px solid var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+/* News Cards - Preview Style */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.news-card {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.news-card:hover {
+  border-color: var(--color-primary);
+  transform: scale(1.02);
+}
+
+.news-card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--color-bg-card);
+  transition: transform 0.3s ease;
+}
+
+.news-card:hover .news-card-bg {
+  transform: scale(1.05);
+}
+
+.news-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    0deg,
+    rgba(10, 22, 40, 0.95) 0%,
+    rgba(10, 22, 40, 0.6) 50%,
+    rgba(10, 22, 40, 0.4) 100%
+  );
+}
+
+.news-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+}
+
+.news-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.news-card-date {
+  color: var(--color-secondary);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.news-card-btn {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background: var(--color-primary);
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.news-card-btn:hover {
+  background: var(--color-secondary);
+  color: var(--color-bg-dark);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 22, 40, 0.95);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.modal {
+  background: var(--color-bg-card);
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 2px solid var(--color-primary);
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--color-primary);
+  color: var(--color-accent);
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.modal-close:hover {
+  background: var(--color-secondary);
+  color: var(--color-bg-dark);
+}
+
+.modal-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.modal-content {
+  padding: 2rem;
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+
+.modal-date {
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+.modal-body {
+  color: var(--color-text);
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+/* Loading & Error States */
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.error {
+  text-align: center;
+  padding: 2rem;
+  color: var(--color-primary);
+  background: rgba(227, 28, 37, 0.1);
+  border: 1px solid var(--color-primary);
+}
+
+/* Footer */
+.footer {
+  background: var(--color-bg-dark);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  color: var(--color-text-muted);
+  border-top: 1px solid #1a3050;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    height: 60vh;
+    min-height: 400px;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+  
+  .nav button {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+  
+  .main {
+    padding: 2rem 1rem 4rem;
+  }
+  
+  .grid, .news-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .modal-title {
+    font-size: 1.8rem;
+  }
+}

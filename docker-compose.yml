@@ -1,0 +1,88 @@
+version: '3.8'
+
+services:
+  # ===================
+  # NGINX - Reverse Proxy
+  # ===================
+  nginx:
+    image: nginx:alpine
+    container_name: wsqk_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./drupal:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - drupal
+    networks:
+      - wsqk_network
+    restart: unless-stopped
+
+  # ===================
+  # DRUPAL - PHP-FPM + CMS
+  # ===================
+  drupal:
+    build:
+      context: .
+      dockerfile: Dockerfile.drupal
+    container_name: wsqk_drupal
+    volumes:
+      - ./drupal:/var/www/html
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - wsqk_network
+    restart: unless-stopped
+
+  # ===================
+  # MYSQL - Base de Datos
+  # ===================
+  mysql:
+    image: mysql:8.0
+    container_name: wsqk_mysql
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    networks:
+      - wsqk_network
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ===================
+  # FRONTEND - Vue.js
+  # ===================
+  frontend:
+    image: node:20-alpine
+    container_name: wsqk_frontend
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "3000:3000"
+    command: sh -c "if [ -f package.json ]; then npm install && npm run dev -- --host 0.0.0.0 --port 3000; else echo 'Waiting for Vue project...' && tail -f /dev/null; fi"
+    networks:
+      - wsqk_network
+    restart: unless-stopped
+
+# ===================
+# RED INTERNA
+# ===================
+networks:
+  wsqk_network:
+    driver: bridge
+
+# ===================
+# VOLÚMENES
+# ===================
+volumes:
+  mysql_data:

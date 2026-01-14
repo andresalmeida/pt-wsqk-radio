@@ -1,0 +1,14 @@
+name: WSQK The Squawk
+type: theme
+description: 'Tema personalizado para WSQK Radio - Hawkins, Indiana'
+core_version_requirement: ^9 || ^10
+base theme: false
+
+regions:
+  header: 'Header'
+  content: 'Content'
+  sidebar: 'Sidebar'
+  footer: 'Footer'
+
+libraries:
+  - wsqk_theme/global
