@@ -38,7 +38,8 @@ export default {
   },
   async mounted() {
     try {
-      const response = await axios.get('http://localhost/jsonapi/node/conductor?include=field_foto')
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost';
+      const response = await axios.get(`${API_URL}/jsonapi/node/conductor?include=field_foto`);
       this.conductores = response.data.data
       this.included = response.data.included || []
     } catch (err) {

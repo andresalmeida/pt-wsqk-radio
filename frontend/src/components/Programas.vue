@@ -36,7 +36,8 @@ export default {
   },
   async mounted() {
     try {
-      const response = await axios.get('http://localhost/jsonapi/node/programa?include=field_imagen')
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost';
+      const response = await axios.get(`${API_URL}/jsonapi/node/programa?include=field_imagen`);
       this.programas = response.data.data
       this.included = response.data.included || []
     } catch (err) {
