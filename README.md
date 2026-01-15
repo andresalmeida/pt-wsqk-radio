@@ -1,4 +1,8 @@
-# 📻 WSQK "The Squawk" Radio
+<div align="center">
+
+# WSQK "The Squawk" Radio
+
+</div>
 
 <div align="center">
 
@@ -10,18 +14,18 @@
 
 **Drupal 10 Headless CMS + Vue.js Frontend**
 
-*Prueba Técnica - Desarrollador Web Drupal*
+*Prueba Técnica - Software Development Consultant (CMS Drupal) *
 
-[🚀 Quick Start](#-quick-start) •
-[📐 Arquitectura](#-arquitectura) •
-[🎨 Features](#-features) •
-[📡 API](#-api-endpoints)
+[Quick Start](#-quick-start) •
+[Arquitectura](#-arquitectura) •
+[Features](#-features) •
+[API](#-api-endpoints)
 
 </div>
 
 ---
 
-## 🎯 Descripción
+## Descripción
 
 **WSQK "The Squawk"** es una aplicación web para una estación de radio con estética retro de los 80s inspirada en *Stranger Things*. Implementa una arquitectura **headless** donde:
 
@@ -31,29 +35,29 @@
 
 ---
 
-## 📐 Arquitectura
+## Arquitectura
 
 ```mermaid
 flowchart TB
-    subgraph DOCKER["🐳 Docker Compose Network"]
+    subgraph DOCKER["Docker Compose Network"]
         subgraph FRONTEND["📱 Frontend Container"]
             VUE["Vue.js 3 + Vite<br/>:3000"]
         end
         
-        subgraph NGINX["🌐 Nginx Container"]
+        subgraph NGINX["Nginx Container"]
             NG["Nginx Alpine<br/>Reverse Proxy<br/>:80"]
         end
         
-        subgraph DRUPAL["💧 Drupal Container"]
+        subgraph DRUPAL["Drupal Container"]
             PHP["PHP-FPM 8.2<br/>Drupal 10 CMS"]
         end
         
-        subgraph MYSQL["🗄️ MySQL Container"]
+        subgraph MYSQL["MySQL Container"]
             DB["MySQL 8.0<br/>wsqk_db"]
         end
     end
     
-    BROWSER["🖥️ Browser"]
+    BROWSER["Browser"]
     
     BROWSER -->|":80"| NG
     BROWSER -->|":3000"| VUE
@@ -68,7 +72,7 @@ flowchart TB
     style MYSQL fill:#4479A1,stroke:#2c3e50,stroke-width:2px
 ```
 
-### 🔗 Flujo de Datos
+### Flujo de Datos
 
 ```mermaid
 sequenceDiagram
@@ -90,7 +94,7 @@ sequenceDiagram
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerrequisitos
 
@@ -117,7 +121,7 @@ drush site:install --db-url=mysql://wsqk_user:wsqk_password_2024@mysql/wsqk_db -
 exit
 ```
 
-### 🌐 Acceso
+### Acceso
 
 | Servicio | URL | Descripción |
 |----------|-----|-------------|
@@ -127,7 +131,7 @@ exit
 
 ---
 
-## 📦 Contenedores
+## Contenedores
 
 | Container | Imagen | Puerto | Función |
 |-----------|--------|--------|---------|
@@ -136,7 +140,7 @@ exit
 | `wsqk_mysql` | `mysql:8.0` | interno | Base de datos |
 | `wsqk_frontend` | `node:20-alpine` | `:3000` | Vue.js dev server |
 
-### 🐳 Comandos Docker Útiles
+### Comandos Docker Útiles
 
 ```bash
 # Ver logs
@@ -163,34 +167,34 @@ docker-compose down -v
 
 ---
 
-## 🎨 Features
+## Features
 
 ### Backend (Drupal 10)
 
-- ✅ **Headless CMS** - JSON:API habilitado
-- ✅ **Content Types personalizados**:
-  - 📰 **Noticia** - título, cuerpo, imagen, fecha
-  - 📻 **Programa** - nombre, descripción, horario, imagen
-  - 🎙️ **Conductor** - nombre, bio, foto
-- ✅ **Tema personalizado** (`wsqk_theme`)
-- ✅ **Roles y permisos**:
+- **Headless CMS** - JSON:API habilitado
+- **Content Types personalizados**:
+  - **Noticia** - título, cuerpo, imagen, fecha
+  - **Programa** - nombre, descripción, horario, imagen
+  - **Conductor** - nombre, bio, foto
+- **Tema personalizado** (`wsqk_theme`)
+- **Roles y permisos**:
   - *Editor* - gestiona noticias
   - *Conductor* - gestiona programas y conductores
 
 ### Frontend (Vue.js 3)
 
-- ✅ **Consumo de JSON:API**
-- ✅ **Hero con video de YouTube** de fondo
-- ✅ **Noticias** con cards e imágenes + modal detalle
-- ✅ **Diseño responsive**
-- ✅ **Estética Stranger Things / 80s**:
+- **Consumo de JSON:API**
+- **Hero con video de YouTube** de fondo
+- **Noticias** con cards e imágenes + modal detalle
+- **Diseño responsive**
+- **Estética Stranger Things / 80s**:
   - Tipografía Bebas Neue
   - Colores: rojo (#e31c25), amarillo (#ffd700), azul oscuro (#0a1628)
   - Efectos glow y neón
 
 ---
 
-## 📡 API Endpoints
+## API Endpoints
 
 Base URL: `http://localhost/jsonapi`
 
@@ -244,14 +248,14 @@ Base URL: `http://localhost/jsonapi`
 
 ---
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 wsqk-radio/
-├── 🐳 docker-compose.yml      # Orquestación de contenedores
-├── 🐳 Dockerfile.drupal       # Build de PHP-FPM + extensiones
+├── docker-compose.yml      # Orquestación de contenedores
+├── Dockerfile.drupal       # Build de PHP-FPM + extensiones
 │
-├── 💧 drupal/                 # Drupal 10 CMS
+├── drupal/                 # Drupal 10 CMS
 │   ├── composer.json
 │   ├── vendor/
 │   └── web/
@@ -260,12 +264,12 @@ wsqk-radio/
 │       ├── sites/
 │       └── themes/
 │           └── custom/
-│               └── wsqk_theme/    # ⭐ Tema personalizado
+│               └── wsqk_theme/    # Tema personalizado
 │                   ├── css/style.css
 │                   ├── templates/
 │                   └── wsqk_theme.info.yml
 │
-├── 📱 frontend/               # Vue.js 3 + Vite
+├── frontend/               # Vue.js 3 + Vite
 │   ├── package.json
 │   ├── vite.config.js
 │   ├── index.html
@@ -278,30 +282,14 @@ wsqk-radio/
 │           ├── Programas.vue
 │           └── Conductores.vue
 │
-├── 🌐 nginx/
+├── nginx/
 │   └── default.conf           # Configuración reverse proxy
 │
-└── 📚 docs/                   # Documentación adicional
+└── docs/                   # Documentación adicional
 ```
-
 ---
 
-## 🎭 Por qué Docker y no "bare metal"?
-
-| Aspecto | Docker 🐳 | Bare Metal 🖥️ |
-|---------|-----------|----------------|
-| **Portabilidad** | ✅ Mismo entorno en cualquier máquina | ❌ Depende del SO |
-| **Reproducibilidad** | ✅ `docker-compose up` y listo | ❌ Instalación manual |
-| **Aislamiento** | ✅ Contenedores independientes | ❌ Conflictos de versiones |
-| **Escalabilidad** | ✅ Fácil replicar servicios | ❌ Configuración manual |
-| **CI/CD** | ✅ Integración natural | ⚠️ Requiere más setup |
-| **Onboarding** | ✅ Nuevo dev productivo en minutos | ❌ Horas de configuración |
-
-> *"Works on my machine"* → *"Works on EVERY machine"* 🚀
-
----
-
-## 🛠️ Desarrollo
+## Desarrollo
 
 ### Frontend (Hot Reload)
 
@@ -331,7 +319,7 @@ drush watchdog:show
 
 ---
 
-## 📝 Credenciales por Defecto
+## Credenciales por Defecto
 
 | Servicio | Usuario | Contraseña |
 |----------|---------|------------|
@@ -352,11 +340,3 @@ Este proyecto fue creado como prueba técnica para demostrar habilidades en:
 - API REST (JSON:API)
 
 ---
-
-<div align="center">
-
-**Hecho con ❤️ y mucho ☕**
-
-*WSQK "The Squawk" - Turning up the volume since 1984* 📻
-
-</div>
